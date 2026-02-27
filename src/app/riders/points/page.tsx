@@ -1,29 +1,10 @@
-import { Message } from '@/components/Message'
-
+import { noData } from './constants'
 import { getRidersPoints } from './data'
 
 export default async function RidersPointsPage() {
-	const result = await getRidersPoints()
+	const ridersPoints = await getRidersPoints()
 
-	if (!result.success) {
-		return (
-			<Message
-				message={result.message ?? `Failed to load rider points`}
-				title='Rider Points'
-			/>
-		)
-	}
-
-	const ridersPoints = result.data
-
-	if (!ridersPoints || !!ridersPoints.length) {
-		return (
-			<Message
-				message='No rider results in the database.'
-				title='Rider Points'
-			/>
-		)
-	}
+	if (!ridersPoints?.length) throw new Error(noData)
 
 	return (
 		<main>

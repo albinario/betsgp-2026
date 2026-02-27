@@ -1,26 +1,16 @@
-import { Message } from '@/components/Message'
+import type { Metadata } from 'next'
 
 import type { ColumnMeta } from '@/types/column-meta'
 
+import { metaData, noData } from './constants'
 import { getRiders } from './data'
 
+export const metadata: Metadata = metaData
+
 export default async function RidersPage() {
-	const result = await getRiders()
+	const riders = await getRiders()
 
-	if (!result.success) {
-		return (
-			<Message
-				message={result.message ?? `Failed to load riders`}
-				title='Riders'
-			/>
-		)
-	}
-
-	const riders = result.data
-
-	if (!riders || !!riders.length) {
-		return <Message message='No riders in the database.' title='Riders' />
-	}
+	if (!riders?.length) throw new Error(noData)
 
 	const alignRight = new Set(['id'])
 	const italic = new Set(['number'])
