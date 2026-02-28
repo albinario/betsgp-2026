@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 
+import { Card } from '@/components/Card'
+
 import type { ColumnMeta } from '@/types/column-meta'
 
 import { metaData, noData } from './constants'
@@ -26,45 +28,46 @@ export default async function RidersPage() {
 
 	return (
 		<main>
-			<h1>Riders</h1>
-
-			<table>
-				<thead>
-					<tr>
-						{columns.map((col) => (
-							<th
-								key={String(col.key)}
-								style={{ textAlign: col.align ?? 'left' }}
-							>
-								{col.label}
-							</th>
-						))}
-					</tr>
-				</thead>
-
-				<tbody>
-					{riders.map((row) => (
-						<tr key={String(row.id)}>
-							{columns.map((col) => {
-								const raw = row[col.key]
-								const value = col.format ? col.format(raw) : String(raw ?? '')
-
-								return (
-									<td
-										key={String(col.key)}
-										style={{
-											textAlign: col.align ?? 'left',
-											fontStyle: col.italic ? 'italic' : undefined,
-										}}
-									>
-										{value}
-									</td>
-								)
-							})}
+			<h1>{metaData.title}</h1>
+			<Card>
+				<table>
+					<thead>
+						<tr>
+							{columns.map((col) => (
+								<th
+									key={String(col.key)}
+									style={{ textAlign: col.align ?? 'left' }}
+								>
+									{col.label}
+								</th>
+							))}
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+
+					<tbody>
+						{riders.map((row) => (
+							<tr key={String(row.id)}>
+								{columns.map((col) => {
+									const raw = row[col.key]
+									const value = col.format ? col.format(raw) : String(raw ?? '')
+
+									return (
+										<td
+											key={String(col.key)}
+											style={{
+												textAlign: col.align ?? 'left',
+												fontStyle: col.italic ? 'italic' : undefined,
+											}}
+										>
+											{value}
+										</td>
+									)
+								})}
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</Card>
 		</main>
 	)
 }

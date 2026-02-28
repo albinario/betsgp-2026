@@ -4,7 +4,7 @@
 	--foreground: #fff;
 	--text-primary: #000;
 	--text-secondary: #666;
-
+	--border: #302e2e;
 	/* Spacing */
 	--spacing-xs: 4px;
 	--spacing-sm: 8px;
@@ -39,7 +39,7 @@
 	:root {
 		--background: #1f1f1f;
 		--foreground: #0a0a0a;
-		--text-primary: #5e58ff;
+		--text-primary: #c05b41;
 		--text-secondary: #999;
 	}
 }
