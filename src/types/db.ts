@@ -5,131 +5,38 @@
 
 import type { ColumnType } from "kysely";
 
-export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
-  ? ColumnType<S, I | undefined, U>
-  : ColumnType<T, T | undefined, T>;
-
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
-
-export interface Activity {
-  creation: Generated<boolean>;
-  dateTime: Generated<Timestamp>;
-  gpId: number;
-  id: Generated<number>;
-  userId: number;
-}
-
-export interface Cities {
-  id: Generated<number>;
-  name: string;
-  nationId: number;
-}
 
 export interface Comments {
   comment: string | null;
-}
-
-export interface Gps {
-  cityId: number;
-  dateTime: Timestamp;
-  finished: Generated<boolean>;
-  gp: number;
-  id: Generated<number>;
-  wildCardId: number | null;
-}
-
-export interface Nations {
-  code: string;
-  id: Generated<number>;
-  name: string;
-}
-
-export interface RiderResults {
-  gpId: number;
-  id: Generated<number>;
-  m1: Generated<number>;
-  m2: Generated<number>;
-  m3: Generated<number>;
-  points: Generated<number>;
-  pos: number | null;
-  races: Generated<number>;
-  riderId: number;
+  date_posted: Timestamp | null;
+  gp_id: string | null;
+  id: number | null;
+  read_by: string | null;
+  reply_to: string | null;
+  user_id: number | null;
 }
 
 export interface Riders {
-  active: Generated<number>;
-  id: Generated<number>;
-  name: string;
-  nationId: number;
-  number: number;
-  sub: Generated<number>;
+  active: string | null;
+  id: number | null;
+  name: string | null;
+  nation_id: number | null;
+  number: number | null;
+  substitute: string | null;
 }
 
-export interface UserPicks {
-  created: Generated<Timestamp>;
-  gpId: number;
-  id: Generated<number>;
-  pick1Id: number;
-  pick2Id: number;
-  pick3Id: number;
-  updated: Timestamp;
-  userId: number;
-}
-
-export interface UserResults {
-  gpId: number;
-  id: Generated<number>;
-  m1: Generated<number>;
-  m2: Generated<number>;
-  m3: Generated<number>;
-  points: Generated<number>;
-  pos: number | null;
-  races: Generated<number>;
-  userId: number;
-}
-
-export interface Users {
-  admin: Generated<boolean>;
-  email: string;
-  firstName: string;
-  id: Generated<number>;
-  lastName: string;
-  registered: Generated<Timestamp>;
-  reminder: Generated<boolean>;
-  uid: string;
-}
-
-export interface UserStandings {
-  id: Generated<number>;
-  m1: Generated<number>;
-  m2: Generated<number>;
-  m3: Generated<number>;
-  points: Generated<number>;
-  pos: number | null;
-  prevPos: number | null;
-  races: Generated<number>;
-  userId: number;
-  year: number;
-}
-
-export interface UserStars {
-  id: Generated<number>;
-  type: number;
-  userId: number;
-  year: number;
+export interface RidersResults {
+  gp_id: number | null;
+  id: number | null;
+  podium: string | null;
+  points: number | null;
+  races: number | null;
+  rider_id: number | null;
 }
 
 export interface DB {
-  activity: Activity;
-  cities: Cities;
   comments: Comments;
-  gps: Gps;
-  nations: Nations;
-  riderResults: RiderResults;
   riders: Riders;
-  userPicks: UserPicks;
-  userResults: UserResults;
-  users: Users;
-  userStandings: UserStandings;
-  userStars: UserStars;
+  riders_results: RidersResults;
 }
