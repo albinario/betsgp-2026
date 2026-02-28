@@ -3,10 +3,11 @@ import { Geist, Geist_Mono } from 'next/font/google'
 
 import { Analytics } from '@vercel/analytics/react'
 
-import { Nav } from '@/components'
-import '@/config/theme.css'
+import { Nav } from '@/components/Nav'
 
 import './globals.css'
+
+import '@/config/theme.css'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',

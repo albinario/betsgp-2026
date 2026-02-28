@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import { navItems, type TNavItem } from '@/config/nav'
-
 import styles from './comp.module.css'
+
+import { navItems, type TNavItem } from '@/config/nav'
 
 const NavItemList = ({ items }: { items: TNavItem[] }) => {
 	return (

@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import type { ComponentType } from 'react'
+
+import Link from 'next/link'
 
 import { auth0 } from '@/lib/auth0'
 import { getRoles } from '@/lib/auth0-claims'
@@ -30,8 +31,8 @@ const ProtectedPage = auth0.withPageAuthRequired(
 					</pre>
 				</details>
 				<div style={{ display: 'flex', gap: '1rem' }}>
-					<Link href='/'>Back home</Link>
-					<a href='/auth/logout'>Log out</a>
+					<Link href="/">Back home</Link>
+					<a href="/auth/logout">Log out</a>
 				</div>
 			</main>
 		)

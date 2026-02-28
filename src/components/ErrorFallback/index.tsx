@@ -1,8 +1,8 @@
 'use client'
 
-import type { TErrorProps } from '@/types/error'
-
 import { Message } from '../Message'
+
+import type { TErrorProps } from '@/types/error'
 
 type TErrorFallback = TErrorProps & {
 	label: string

@@ -1,3 +1,5 @@
+import { Card } from '@/components/Card'
+
 import { noData } from './constants'
 import { getRidersPoints } from './data'
 
@@ -10,23 +12,25 @@ export default async function RidersPointsPage() {
 		<main>
 			<h1>Rider Points</h1>
 
-			<table>
-				<thead>
-					<tr>
-						<th>name</th>
-						<th>totalPoints</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					{ridersPoints.map((row) => (
-						<tr key={String(row.id)}>
-							<td>{row.name}</td>
-							<td>{row.totalPoints}</td>
+			<Card>
+				<table>
+					<thead>
+						<tr>
+							<th>name</th>
+							<th>totalPoints</th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+
+					<tbody>
+						{ridersPoints.map((row) => (
+							<tr key={String(row.id)}>
+								<td>{row.name}</td>
+								<td>{row.totalPoints}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</Card>
 		</main>
 	)
 }

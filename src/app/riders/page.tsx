@@ -2,17 +2,15 @@ import type { Metadata } from 'next'
 
 import { Card } from '@/components/Card'
 
-import type { ColumnMeta } from '@/types/column-meta'
-
 import { metaData, noData } from './constants'
 import { getRiders } from './data'
+
+import type { ColumnMeta } from '@/types/column-meta'
 
 export const metadata: Metadata = metaData
 
 export default async function RidersPage() {
 	const riders = await getRiders()
-
-	console.log(riders)
 
 	if (!riders?.length) throw new Error(noData)
 
@@ -31,6 +29,7 @@ export default async function RidersPage() {
 	return (
 		<main>
 			<h1>{metaData.title}</h1>
+
 			<Card>
 				<table>
 					<thead>

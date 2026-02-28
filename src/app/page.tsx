@@ -13,8 +13,8 @@ export default async function Home() {
 		<main>
 			<Image
 				className={styles.logo}
-				src='/next.svg'
-				alt='Next.js logo'
+				src="/next.svg"
+				alt="Next.js logo"
 				width={100}
 				height={20}
 				priority
@@ -26,13 +26,13 @@ export default async function Home() {
 				{user ? (
 					<>
 						<p>Signed in as {user.name ?? user.email}.</p>
-						<a href='/auth/logout'>Log out</a>
+						<a href="/auth/logout">Log out</a>
 					</>
 				) : (
-					<a href='/auth/login'>Log in</a>
+					<a href="/auth/login">Log in</a>
 				)}
-				<Link href='/protected'>User protected page</Link>
-				<Link href='/admin'>Admin protected page</Link>
+				<Link href="/protected">User protected page</Link>
+				<Link href="/admin">Admin protected page</Link>
 			</div>
 		</main>
 	)
