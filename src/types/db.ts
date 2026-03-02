@@ -11,13 +11,33 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
+export interface Cities {
+  id: Generated<number>;
+  name: Generated<string>;
+  nation_id: number;
+}
+
 export interface Comments {
   comment: string;
-  date_posted: Generated<Timestamp>;
+  date: Generated<Timestamp>;
   gp_id: number | null;
   id: Generated<number>;
   reply_to: number | null;
   user_id: number;
+}
+
+export interface Gps {
+  city_id: number;
+  finished: number | null;
+  gp: number;
+  id: Generated<number>;
+  start: Timestamp | null;
+  wild_card: number | null;
+}
+
+export interface Nations {
+  id: Generated<number>;
+  name: Generated<string>;
 }
 
 export interface Riders {
@@ -31,10 +51,10 @@ export interface Riders {
 
 export interface RidersResults {
   gp_id: number;
+  heats: Generated<number>;
   id: Generated<number>;
   podium: number | null;
   points: Generated<number>;
-  races: Generated<number>;
   rider_id: number;
 }
 
@@ -48,9 +68,20 @@ export interface Users {
   reminder: Generated<number>;
 }
 
+export interface UsersPicksLog {
+  date: Generated<Timestamp>;
+  gp_id: number | null;
+  id: Generated<number>;
+  user_id: number | null;
+}
+
 export interface DB {
+  cities: Cities;
   comments: Comments;
+  gps: Gps;
+  nations: Nations;
   riders: Riders;
   riders_results: RidersResults;
   users: Users;
+  users_picks_log: UsersPicksLog;
 }
