@@ -21,7 +21,7 @@ export default async function Home() {
 				height={20}
 				priority
 			/>
-			<h1>Speedway GP Fantasy</h1>
+			<h1>Speedway Fantasy</h1>
 			<p>Coming soon...</p>
 
 			<div className={styles.content}>
